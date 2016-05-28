@@ -1,6 +1,6 @@
 #This code will convert all the genres into seperate columns and will give 1 or 0 depending on whether
 #a particular genre is present or not
-# It will create a seperate CSV file which is named movieWithGenre
+
 library(tm)
 library(wordcloud)
 head(movies)
@@ -40,6 +40,6 @@ movieG$Documentary<-ifelse(grepl("Documentary",movies$genres),1,0)
 movieG$Musical<-ifelse(grepl("Musical",movies$genres),1,0)
 movieG$genres<-NULL
 
-head(movieG)
+
 
 
