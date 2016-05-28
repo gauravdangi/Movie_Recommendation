@@ -2,18 +2,11 @@
 #a particular genre is present or not
 
 library(tm)
-library(wordcloud)
+
 head(movies)
 #####create a dataframe having the the columns of movies
 movieG<-data.frame(movieId=movies$movieId,title=movies$title,genres=as.character(movies$genres))
 head(movieG)
-
-m<-Corpus(VectorSource(movies$genres))
-m<-tm_map(m,removePunctuation)
-m<-tm_map(m,removeWords,c("|"))
-m[[2]]$content
-wordcloud(m)
-
 
 
 #####Separating genre to each column(1=true and 0=false)
