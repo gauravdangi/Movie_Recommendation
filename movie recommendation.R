@@ -9,10 +9,10 @@ movies_fi<-movies_fi[-3]
 
  #Now we need to create a correlation matrix
 #We need to find correlation between to movies
-mov=movies_fi[,-3]
+mov=movies_fi[,-3]  #to remove extra movieId column
 cor(mov$averageRating,mov)   #Drama movies have higher average rating compared to other genre followed by war and FilmNoir
 #We need a data that contains userID, movie names and their ratings bu particular user
-user_movies<-sqldf("select userId,title,rating 
+user_movie<-sqldf("select userId,title,rating 
                   From ratings a,movies_fi b
                   where a.movieId = b.movieId
                   ORDER BY userId")
@@ -30,7 +30,7 @@ IQR(movies_fi$averageRating)   #0.6931551
 
 ##-----------------------------------------------------------------------------------------
 
-
+##Convert user_movie into a realRatingMatrix
 
 G<-as(user_movie,"realRatingMatrix")
 
